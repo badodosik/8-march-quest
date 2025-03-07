@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квест 8 Марта</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #ffe4e1;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ff1493;
+        }
+        button {
+            background-color: #ff1493;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #d11379;
+        }
+        #question, #answerInput, #submitBtn, #nextLink {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Добро пожаловать в квест!</h1>
+        <p id="startText">Ты девушка?</p>
+        <button id="yesBtn">Да</button>
+        
+        <p id="question">Я дом для ботов, стикеров и чатов, <br>
+            Там, где каналы вещают без затрат. <br>
+            Меня выбирают для быстрых бесед – <br>
+            Где найдёшь ты меня, дай-ка ответ?</p>
+        <input type="text" id="answerInput" placeholder="Введи ответ">
+        <button id="submitBtn">Ответить</button>
+        
+        <p id="result"></p>
+        <a id="nextLink" href="https://t.me/ТВОЙ_БОТ" target="_blank">Перейти к следующему этапу</a>
+    </div>
+
+    <script>
+        document.getElementById("yesBtn").addEventListener("click", function() {
+            let confirm1 = confirm("Ты уверена?");
+            if (confirm1) {
+                document.getElementById("startText").style.display = "none";
+                document.getElementById("yesBtn").style.display = "none";
+                document.getElementById("question").style.display = "block";
+                document.getElementById("answerInput").style.display = "block";
+                document.getElementById("submitBtn").style.display = "block";
+            }
+        });
+
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            let answer = document.getElementById("answerInput").value.trim().toLowerCase();
+            if (answer === "telegram" || answer === "телеграм") {
+                document.getElementById("result").innerText = "Верно! Вот твоя ссылка:";
+                document.getElementById("nextLink").style.display = "block";
+            } else {
+                document.getElementById("result").innerText = "Неправильно, попробуй ещё раз!";
+            }
+        });
+    </script>
+
+</body>
+</html>
